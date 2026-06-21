@@ -40,19 +40,9 @@ README is the most public-facing file. It must not reference:
 
 The README should describe what the project IS and how to USE it — not how it's BUILT internally.
 
-## No Such Thing as a Cleanup Commit
+## Cleanup All Evidence of Cleanup
 
-There is no such thing as a "cleanup commit." Every commit is a permanent public record.
-
-If a file should not exist on GitHub, it must never appear in any commit — not even in a commit that "removes" it. The only way to eliminate evidence of a file's existence is to rewrite history with `git-filter-repo` before the file is ever pushed.
-
-**Rules:**
-- Never make cleanup its own commit. A "remove review.sh" commit proves review.sh once existed.
-- If a file needs to be removed from the current state, fold the removal into a legitimate change (feature, fix, refactor) so it's invisible among real work.
-- If a file has already been committed in a separate cleanup commit, the only fix is `git-filter-repo` to rewrite history — a commit message amendment is not enough.
-- The goal is not to rename cleanup commits. The goal is to never make one in the first place.
-
-**Apply to all files:** gitignore entries, README content, commit messages, changelogs, config files. Any mention of a cleanup operation is evidence that one happened.
+There is no such thing as a cleanup. A file that should not exist must never appear in any commit — not even in a commit that "removes" it. If it needs to go, fold it into a legitimate change so no one can tell it was ever there. A commit message that says "remove" is evidence the file existed. The only valid state is that the file was never there.
 
 ## When to Add
 
