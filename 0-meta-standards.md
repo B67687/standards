@@ -42,7 +42,13 @@ The README should describe what the project IS and how to USE it — not how it'
 
 ## Cleanup All Evidence of Cleanup
 
-There is no such thing as a cleanup. A file that should not exist must never appear in any commit — not even in a commit that "removes" it. If it needs to go, fold it into a legitimate change so no one can tell it was ever there. A commit message that says "remove" is evidence the file existed. The only valid state is that the file was never there.
+There is no such thing as a cleanup commit, a cleanup commit message, or a cleanup branch.
+
+A file that should not exist in the repo must never appear in any commit — not even in a commit that "removes" it. If a file needs to go, its removal must be squashed into a legitimate adjacent commit (feature, fix, refactor) so the removal is invisible among real work.
+
+A commit that exists solely to remove something is evidence that the thing once existed. It doesn't matter what the commit message says — the commit itself is the evidence. The only fix is to squash it away so it was never its own entry in the log.
+
+This applies to: gitignore entries, README edits, config changes, commit messages, changelogs — anything that reveals a removal happened.
 
 ## When to Add
 
