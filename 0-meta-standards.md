@@ -30,6 +30,16 @@ Every line in a committed file is **public documentation**. It reveals:
 
 If a file doesn't need to mention something, not mentioning it is the safest option. The absence of information is not a gap — it's a deliberate protection boundary.
 
+## READMEs
+
+README is the most public-facing file. It must not reference:
+- Local-only scripts or tools (`review.sh`, `scripts/`, `local CI commands`)
+- Local directory structure (`docs/adr/`, `docs/solutions/` — these are empty until filled)
+- Local CI infrastructure (cron schedules, local-only tools, package managers)
+- Internal processes that only matter to the maintainer
+
+The README should describe what the project IS and how to USE it — not how it's BUILT internally.
+
 ## When to Add
 
 Add content only when:
