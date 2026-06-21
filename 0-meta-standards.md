@@ -40,14 +40,19 @@ README is the most public-facing file. It must not reference:
 
 The README should describe what the project IS and how to USE it — not how it's BUILT internally.
 
-## Removing Evidence of Cleaning
+## No Such Thing as a Cleanup Commit
 
-When files are removed from history or moved to local-only, all evidence of the operation must be cleaned:
+There is no such thing as a "cleanup commit." Every commit is a permanent public record.
 
-- **Commit messages** must not reference the removed content. "chore: remove review.sh" tells readers review.sh once existed. Use neutral messages like "chore: update config" or batch into general housekeeping commits.
-- **READMEs** must not reference files that no longer exist on GitHub (review.sh, .github/workflows/).
-- **Config files** must not mention local-only files by name (see .gitignore principles).
-- **Changelogs** must not log infrastructure changes that expose internal tooling. A changelog is for users, not maintainers.
+If a file should not exist on GitHub, it must never appear in any commit — not even in a commit that "removes" it. The only way to eliminate evidence of a file's existence is to rewrite history with `git-filter-repo` before the file is ever pushed.
+
+**Rules:**
+- Never make cleanup its own commit. A "remove review.sh" commit proves review.sh once existed.
+- If a file needs to be removed from the current state, fold the removal into a legitimate change (feature, fix, refactor) so it's invisible among real work.
+- If a file has already been committed in a separate cleanup commit, the only fix is `git-filter-repo` to rewrite history — a commit message amendment is not enough.
+- The goal is not to rename cleanup commits. The goal is to never make one in the first place.
+
+**Apply to all files:** gitignore entries, README content, commit messages, changelogs, config files. Any mention of a cleanup operation is evidence that one happened.
 
 ## When to Add
 
