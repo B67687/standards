@@ -372,6 +372,11 @@ Traditional project layout, no harness:
 
 ---
 
+## Location
+
+Standards moved to `~/projects/dev/standards/` as their own topic folder.
+Scripts for applying standards are in `~/projects/dev/standards/scripts/`.
+
 ## Future Candidates (Not Yet Started)
 
 | Domain | Cross-Repo | Status |
