@@ -61,3 +61,32 @@ Remove content when:
 1. It documents local-only infrastructure
 2. It's redundant with a broader pattern
 3. It reveals more than necessary about your setup
+
+## Operational Rule: YAGNI
+
+The Minimal Surface Principle is achieved operationally by following **YAGNI (You Ain't Gonna Need It)**:
+
+- Add a config entry only when a tool or workflow actually requires it, not when you anticipate future need
+- Add a `.gitignore` entry only when a file actually appears, not as preemptive protection
+- Add a README section only when a user actually needs the information, not for completeness
+- Remove an entry when the requirement is removed — don't keep "just in case" entries
+
+Every config entry is functionality in configuration space. Adding it before you need it is the config equivalent of adding code before you call it.
+
+## Sources
+
+The Minimal Surface Principle is not novel — it is the convergence of seven established industry principles applied to file content:
+
+| Principle | Source | Relationship |
+|-----------|--------|-------------|
+| **Rule of Silence** | Unix (McIlroy) | A file should be silent except for what distinguishes it from defaults |
+| **Occam's Razor** | William of Ockham | Entities (lines, entries) must not be multiplied beyond necessity |
+| **YAGNI** | XP / Ron Jeffries | Add entries only when actually needed, never preemptively |
+| **Least Privilege** | Saltzer & Schroeder | Expose only the information necessary for the file's purpose |
+| **DRY** | Hunt & Thomas | Every piece of knowledge has one authoritative representation |
+| **SSOT** | Information science | Master each fact in exactly one place; curate each location |
+| **Chesterton's Fence** | G. K. Chesterton | Before removing an entry, understand why it was added |
+
+### Corollary: Einstein's Razor
+
+Everything should be as simple as possible, **but not simpler**. Minimal does not mean cryptic. A comment explaining why a non-obvious entry exists is not excess — it is part of the required information. The goal is minimal surface, not minimal comprehension.
