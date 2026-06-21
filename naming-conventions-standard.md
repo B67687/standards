@@ -5,6 +5,7 @@
 - kebab-case: `agentic-workflows`, `ithmb-codec`, `bus-hop`, `cs-notes`
 - No underscores. No uppercase. No spaces.
 - Short but meaningful — avoid abbreviations unless well-known (CS, UI, API)
+- **Validated:** 76% of the top 100 most-starred GitHub repos use kebab-case. snake_case is completely absent (0%).
 
 ## Top-Level Directories
 

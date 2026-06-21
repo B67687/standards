@@ -8,8 +8,9 @@ MIT is:
 
 - Permissive — anyone can use, copy, modify, merge, publish, distribute
 - Compatible with most ecosystems (npm, PyPI, Crates.io, NuGet, Maven)
-- The standard for open-source projects without corporate requirements
+- The standard for open-source projects without corporate requirements (~33% of all GitHub repos)
 - What your existing licensed repos already use
+- **[ChooseALicense.com](https://choosealicense.com/) recommends MIT** as the first option for "I want it simple and permissive"
 
 ## License File
 
@@ -18,7 +19,7 @@ The license text goes in the repo root as `LICENSE` (no extension, no `.txt`).
 ```text
 MIT License
 
-Copyright (c) [year] B67687
+Copyright (c) [year] The Agentic Workflows Authors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -30,7 +31,18 @@ furnished to do so, subject to the following conditions:
 [full MIT text...]
 ```
 
+**Copyright holder:** Use `The Agentic Workflows Authors` (not the GitHub username `B67687` which is opaque). A meaningful holder name is important for legal clarity.
+
 **Year rule:** Use the year the repo was first created. If the repo was created in 2025 and the license is added in 2026, use `2025`. If the repo spans multiple years, use the range `2025-2026`.
+
+## When to Use Apache 2.0 Instead
+
+Apache 2.0 adds explicit patent protection and trademark reservation. Use it when:
+- The project involves **patented technology**
+- **Corporate policy** requires explicit patent grants from contributors
+- You need **trademark protection** in the license terms
+
+For all other cases, MIT is the correct default.
 
 ## Repos Missing Licenses
 

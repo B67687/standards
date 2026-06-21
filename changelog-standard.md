@@ -172,6 +172,49 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 [Unreleased]: https://github.com/OWNER/REPO/compare/v0.1.0...HEAD
 ```
 
+## Edge Cases
+
+### Pre-release versions (alpha, beta, rc)
+Do NOT include pre-release versions as separate entries. Track changes in `[Unreleased]` section. Only create an entry when the stable version ships. If a pre-release has meaningful breaking changes that users must know about, add a single entry marked with *(Preview — not for production)*.
+
+### Multiple release lines (e.g. v1.x and v2.x)
+Split into per-version files when maintaining multiple active release lines:
+
+```
+CHANGELOG.md          # Root index with quick-reference table + links
+CHANGELOG_V2.md       # v2.x series (active)
+CHANGELOG_V1.md       # v1.x series (maintenance/EOL)
+```
+
+The root `CHANGELOG.md` remains the entry point, linking to detail files.
+
+### Security advisories
+Lead security entries with the CVE ID:
+
+```markdown
+### Security
+- CVE-2026-1234: Fixed SQL injection in query builder.
+- CVE-2026-5678: Patched XSS in template rendering.
+```
+
+### Private / internal repos
+Keep a changelog regardless of visibility. A lightweight format (`Added`, `Changed`, `Fixed`, `Removed`) is sufficient. The changelog serves your future self as much as collaborators.
+
+### Docs-only repos
+The same format works, but section meanings shift: `Added` = new pages, `Changed` = rewrites, `Fixed` = typos/corrections, `Removed` = retired pages.
+
+### Internationalization
+Single language (English). Do NOT translate the changelog itself — maintaining N translations per release is not worth the cost.
+
+### Version links
+Reference-style links at the bottom of the file. First version links to its tag; subsequent versions link to compare:
+
+```markdown
+[Unreleased]: https://github.com/OWNER/REPO/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/OWNER/REPO/compare/v0.0.1...v1.0.0
+[0.0.1]: https://github.com/OWNER/REPO/releases/tag/v0.0.1
+```
+
 ## Tools
 
 - **[git-cliff](https://git-cliff.github.io/)** — optional changelog generator from conventional commits. Use it as a pre-release completeness check, not a replacement for hand-crafted narrative. Works with existing commitlint setup.

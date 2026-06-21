@@ -117,6 +117,29 @@ Architecture → Contributing → License
 
 Key features: screenshots near top, download links, privacy section.
 
+## GitHub Alerts
+
+Use GitHub-flavored markdown alerts for callouts. They render as colored boxes:
+
+```markdown
+> [!NOTE]
+> Key information that users should be aware of.
+
+> [!TIP]
+> Helpful advice for doing things better.
+
+> [!IMPORTANT]
+> Information that is critical to understanding the project.
+
+> [!WARNING]
+> Content that has the potential to cause issues.
+
+> [!CAUTION]
+> Potential negative consequences of an action.
+```
+
+Use alerts sparingly — they lose impact if overused. One alert per section max.
+
 ## Image Paths
 
 All images use relative paths under `docs/`:

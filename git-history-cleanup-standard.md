@@ -438,11 +438,13 @@ On GitHub, commits appear as **Unverified** if the signature was stripped. To re
 If you want all commits to remain verified after cleanup:
 
 ```bash
-# Re-sign all commits in the rewritten history
-git rebase --exec 'git commit --amend --no-edit -S' --root
+# Re-sign all commits in the rewritten history, preserving dates
+git rebase --exec 'GIT_COMMITTER_DATE="$(git log -1 --format=%aD)" git commit --amend --no-edit -S' --root
 ```
 
-This creates yet another set of new commit SHAs, which means **another force-push** and another round of collaborator notification. Only do this if commit verification is critical for your workflow.
+**Critical: Preserve dates.** Without `GIT_COMMITTER_DATE`, all commits will get the current timestamp as their committer date. The `--committer-date-is-author-date` flag does not work reliably with `--exec`. Use the explicit `GIT_COMMITTER_DATE` approach above.
+
+This creates yet another set of new commit SHAs, which means **another force-push** and another round of collaborator notification. Plan all history changes (message rewriting + re-signing) into as few filter-repo passes as possible to minimize force-pushes.
 
 ### Verify Signatures Are Restored
 

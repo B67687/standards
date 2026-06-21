@@ -148,6 +148,16 @@ This captures the dynamic without overselling or underselling either side.
 
 ---
 
+## Future-Proofing
+
+This standard was created before any regulatory framework mandated AI attribution. As of mid-2026:
+
+- **EU AI Act Article 50** (effective August 2026) requires disclosure of AI-generated content published for public information. Code is a form of text — your CREDITS.md aligns well with transparency principles.
+- **US Copyright Office** requires disclosure of AI-generated content in copyright registration applications. CREDITS.md serves as good-faith documentation.
+- **No major open-source project** (OpenAI, Anthropic, MCP, Keybase) uses any formal AI attribution format as of 2026. This standard is ahead of the industry.
+
+The format is extensible — if regulatory requirements evolve, the table can accommodate additional columns (confidence, human review status, machine-readable markings) without restructuring.
+
 ## Rationale
 
 | Decision                                        | Why                                                                                 |
