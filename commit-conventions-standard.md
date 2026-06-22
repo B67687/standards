@@ -75,17 +75,18 @@ to eliminate code duplication across decoders.
 Closes #142
 ```
 
-### Co-authored-by
+### Co-authored-by (AI Attribution)
 
-For AI-assisted or pair-programmed commits, use the standard GitHub trailer:
+For AI-assisted commits, see [ai-attribution-standard.md](./ai-attribution-standard.md). Use the `Co-Authored-By:` format with a `.local` domain email — never use a routable email that could map to a GitHub account.
 
 ```
 feat(core): add bus route caching
 
-Co-authored-by: DeepSeek V4 Flash <ai@deepseek.com>
+Co-Authored-By: DeepSeek V4 Flash via oh-my-openagent
+  <deepseek-v4-flash+oh-my-openagent@models.local>
 ```
 
-One `Co-authored-by:` line per additional contributor. Place after the body, separated by a blank line. The email should match the GitHub-associated email of the co-author.
+For human pair-programming, use the standard GitHub `Co-authored-by:` with the person's actual GitHub email.
 
 ### Breaking Changes
 
@@ -122,7 +123,7 @@ git commit -S -m "feat: add bus route caching"
 AI-generated commit messages are permitted as long as they:
 - Pass commitlint validation (same rules as human-written)
 - Are reviewed by a human before committing
-- Include `Co-authored-by:` if the AI contributed substantively to the change
+- Include the AI attribution trailer per [ai-attribution-standard.md](./ai-attribution-standard.md)
 
 Recommended tools: `gh copilot suggest -t commit`, `aicommits`, or prompting an AI to format your diff as a conventional commit.
 
