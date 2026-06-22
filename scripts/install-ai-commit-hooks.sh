@@ -34,10 +34,10 @@ echo "==> Setting core.hooksPath globally..."
 git config --global core.hooksPath "$HOOKS_DIR"
 
 echo "==> Setting git aliases..."
-git config --global alias.ca '!f() { GIT_COMMITTER_DATE="$(git log -1 --format=%aD HEAD 2>/dev/null || date)" git commit --amend "$@"; }; f'
-git config --global alias.car '!f() { GIT_COMMITTER_DATE="$(git log -1 --format=%aD HEAD 2>/dev/null || date)" git commit --amend --no-edit "$@"; }; f'
+git config --global alias.ca '!f() { AI_COMMIT=1 AI_MODEL="${AI_MODEL:-DeepSeek V4 Flash (Max)}" AI_HARNESS="${AI_HARNESS:-oh-my-openagent (Sisyphus)}" GIT_COMMITTER_DATE="$(git log -1 --format=%aD HEAD 2>/dev/null || date)" git commit --amend "$@"; }; f'
+git config --global alias.car '!f() { AI_COMMIT=1 AI_MODEL="${AI_MODEL:-DeepSeek V4 Flash (Max)}" AI_HARNESS="${AI_HARNESS:-oh-my-openagent (Sisyphus)}" GIT_COMMITTER_DATE="$(git log -1 --format=%aD HEAD 2>/dev/null || date)" git commit --amend --no-edit "$@"; }; f'
 git config --global alias.rb 'rebase --committer-date-is-author-date'
-git config --global alias.ai-commit '!f() { AI_COMMIT=1 AI_MODEL="${AI_MODEL:-DeepSeek V4 Flash (Max)}" AI_HARNESS="${AI_HARNESS:-oh-my-openagent}" git commit "$@"; }; f'
+git config --global alias.ai-commit '!f() { AI_COMMIT=1 AI_MODEL="${AI_MODEL:-DeepSeek V4 Flash (Max)}" AI_HARNESS="${AI_HARNESS:-oh-my-openagent (Sisyphus)}" git commit "$@"; }; f'
 
 echo "==> Enabling commit.gpgsign..."
 git config --global commit.gpgsign true
