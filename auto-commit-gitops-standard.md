@@ -45,10 +45,10 @@ git commit
 
 | Alias | Expands To | Purpose |
 |-------|-----------|---------|
-| `git ca` | `GIT_COMMITTER_DATE=... git commit --amend` | Amend while preserving committer date = author date |
-| `git car` | `GIT_COMMITTER_DATE=... git commit --amend --no-edit` | Amend without editing message, date preserved |
+| `git ca` | `!f() { AI_COMMIT=1 AI_MODEL="${AI_MODEL:-DeepSeek V4 Flash (Max)}" AI_HARNESS="${AI_HARNESS:-oh-my-openagent (Sisyphus)}" GIT_COMMITTER_DATE="$(git log -1 --format=%aD HEAD 2>/dev/null \|\| date)" git commit --amend "$@"; }; f` | Amend with auto-AI-trailer + date preservation |
+| `git car` | `!f() { AI_COMMIT=1 AI_MODEL="${AI_MODEL:-DeepSeek V4 Flash (Max)}" AI_HARNESS="${AI_HARNESS:-oh-my-openagent (Sisyphus)}" GIT_COMMITTER_DATE="$(git log -1 --format=%aD HEAD 2>/dev/null \|\| date)" git commit --amend --no-edit "$@"; }; f` | Amend no-edit, AI trailered + date preserved |
 | `git rb` | `rebase --committer-date-is-author-date` | Rebase while preserving original commit dates |
-| `git ai-commit` | `AI_COMMIT=1 AI_MODEL=... AI_HARNESS=... git commit` | Quick AI commit with defaults |
+| `git ai-commit` | `AI_COMMIT=1 AI_MODEL="${AI_MODEL:-DeepSeek V4 Flash (Max)}" AI_HARNESS="${AI_HARNESS:-oh-my-openagent (Sisyphus)}" git commit` | Quick AI commit with defaults |
 
 ### Git Config
 
