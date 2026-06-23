@@ -9,9 +9,10 @@
 #   3. ai-attribution-line: AI attribution mention present
 #   4. quick-start-section: Quick Start or Getting Started section
 #   5. license-section:   License section
-#   6. section-order:     README section order against standard (agent eval)
-#   7. description-quality: Description ≤120 chars and clear (agent eval)
-#   8. split-threshold:   README complexity and split threshold (agent eval)
+#   6. centered-title:    Title wrapped in centered div
+#   7. section-order:     README section order against standard (agent eval)
+#   8. description-quality: Description ≤120 chars and clear (agent eval)
+#   9. split-threshold:   README complexity and split threshold (agent eval)
 
 set -euo pipefail
 
@@ -77,7 +78,15 @@ checks_readme_quality() {
       grep -qiE '^## License' "${repo}/README.md" 2>/dev/null
   fi
 
-  # ── Check 6: Section order (agent eval) ────────────────────────────────
+  # ── Check 6: Centered title ──────────────────────────────────────────────
+  if [ ! -f "${repo}/README.md" ]; then
+    _check_fail "centered-title" "README title wrapped in centered div (not found)"
+  else
+    _check "centered-title" "README title wrapped in <div align=\"center\">" \
+      head -3 "${repo}/README.md" | grep -qE '<div\s+align="?center"?>'
+  fi
+
+  # ── Check 7: Section order (agent eval) ────────────────────────────────
   if [ ! -f "${repo}/README.md" ]; then
     _check_fail "section-order" "README section order follows standard (not found)"
   else
@@ -100,7 +109,7 @@ AGENTJSON
     _check_pending "section-order" "README section order follows standard (pending agent review)"
   fi
 
-  # ── Check 7: Description quality (agent eval) ──────────────────────────
+  # ── Check 8: Description quality (agent eval) ──────────────────────────
   if [ ! -f "${repo}/README.md" ]; then
     _check_fail "description-quality" "README description is clear and ≤120 chars (not found)"
   else
@@ -122,7 +131,7 @@ AGENTJSON
     _check_pending "description-quality" "README description is clear and ≤120 chars (pending agent review)"
   fi
 
-  # ── Check 8: Split threshold (agent eval) ──────────────────────────────
+  # ── Check 9: Split threshold (agent eval) ──────────────────────────────
   if [ ! -f "${repo}/README.md" ]; then
     _check_fail "split-threshold" "README complexity and split threshold (not found)"
   else

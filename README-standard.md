@@ -1,5 +1,24 @@
 # README Standard
 
+## Title Format
+
+The title is an H1 heading wrapped in a centered `<div>` tag, followed by the badge row and summary line inside the same centered block:
+
+```html
+<div align="center">
+
+# Project Name
+
+<picture>
+  <img src="docs/badges/..." alt="...">
+</picture>
+...
+
+Short description (≤120 chars, no heading)
+
+</div>
+```
+
 ## Section Order
 
 ```
