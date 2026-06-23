@@ -96,12 +96,12 @@ AI attribution is also **visual** — badges grouped under the "Built with AI as
 
 Generate badges using `scripts/generate-badge.sh` per the [badge-standard.md](./badge-standard.md):
 
-| Component | Label (full name) | Value (qualifier) | Color | Example |
-|-----------|-------------------|-------------------|-------|---------|
-| AI Model | Full model name | Max variant or version | Per-model color (below) | `deepseek-v4-flash` / `Max` on `#4f46e5` |
+| Component | Label (full name) | Value (reasoning level) | Color | Example |
+|-----------|-------------------|------------------------|-------|---------|
+| AI Model | Full model name | Reasoning level / tier | Per-model color (below) | `deepseek-v4-flash` / `Max` on `#4f46e5` |
 | Harness | Harness name | `harness` | `#7f52ff` (purple) | `opencode` / `harness` on `#7f52ff` |
 
-The label uses the full branded model name (e.g. "DeepSeek V4 Flash") and the value is the max-qualifier (e.g. "Max"). This keeps the badge self-documenting — readers see exactly which model and which tier.
+The label uses the full branded model name (e.g. "DeepSeek V4 Flash") and the value is the **reasoning level** — the model's capability tier (e.g. Max, Pro, Sonnet, Flash). This keeps the badge self-documenting — readers see exactly which model and which reasoning tier.
 
 ### Per-Model Colors
 
@@ -165,7 +165,7 @@ Built with AI assistance — see [CREDITS.md](./CREDITS.md).
 ### Generator Commands
 
 ```bash
-# Model badge — label=full model name, value=max qualifier
+# Model badge — label=full model name, value=reasoning level
 bash scripts/generate-badge.sh \
   --label "DeepSeek V4 Flash" \
   --value "Max" \
