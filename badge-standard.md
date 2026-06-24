@@ -33,15 +33,15 @@ All badges follow shields.io format — a two-part SVG with a dark label on the 
 
 Badges are two-part: **Label** (left, dark gray `#555`) and **Value** (right, colored). The label-value split follows this convention:
 
-| Badge Type | Label (full name) | Value (reasoning level) | Example |
-|------------|------------------|------------------------|---------|
-| AI Model | Full model name as branded by provider | Reasoning level / tier | `DeepSeek V4 Flash` / `Max` |
-| Harness | Harness name only | `harness` | `Oh My OpenAgent` / `harness` |
+| Badge Type | Label (category) | Value (name) | Example |
+|------------|-----------------|--------------|---------|
+| AI Model | `model` | Full model name + tier in parens if subtier | `model` / `DeepSeek V4 Flash (Max)` |
+| Harness | `harness` | Harness display name | `harness` / `Oh My OpenAgent` |
 | Language | Language name | Version or `standard` | `Kotlin` / `2.1` |
 | License | `license` | SPDX identifier | `license` / `MIT` |
 | Metrics | Plural noun | Number | `tests` / `161` |
 
-The label MUST be the full recognizable name — not abbreviated. The value is the **reasoning level** — the model tier or capability variant (e.g. Max, Pro, Sonnet, Flash, Mini). This gives readers immediate context: *what model* (label) and *which reasoning tier* (value).
+The label is always the **category** (e.g. `model`, `harness`, `license`), not the individual name. The value is the specific thing — the full model name (with tier parenthesized if it's a subtier, not part of the canonical name), or the harness display name. This makes all badges consistent: type on the left, name on the right.
 | Build/CI | `#007ec6` (blue) | actions, html |
 
 Note: `#2ea44f` is slightly darker than standard shields.io green (`#4b0`/`#44BB00`) for better WCAG AA compliance with white text. The shields.io default greens (~2.5:1 contrast) fail accessibility standards; this standard uses contrast-safe alternatives where feasible.
@@ -104,8 +104,8 @@ Badges appear in the README header:
 <p align="center">
   <img src="docs/badges/kotlin.svg" alt="Kotlin">
   <img src="docs/badges/license.svg" alt="MIT">
-  <img src="docs/badges/deepseek.svg" alt="DeepSeek V4 Flash">
-  <img src="docs/badges/oh-my-openagent-harness.svg" alt="Oh My OpenAgent">
+  <img src="docs/badges/deepseek.svg" alt="model: DeepSeek V4 Flash (Max)">
+  <img src="docs/badges/oh-my-openagent-harness.svg" alt="harness: Oh My OpenAgent">
 </p>
 ```
 

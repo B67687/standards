@@ -95,8 +95,8 @@ The problem: `git commit --amend` and `git rebase` reset committer date to the c
 GitHub doesn't support avatars for non-user accounts. For visual attribution, use README badges per [badge-standard.md](./badge-standard.md):
 
 ```html
-<img src="docs/badges/deepseek.svg" alt="DeepSeek V4 Flash">
-<img src="docs/badges/oh-my-openagent-harness.svg" alt="Oh My OpenAgent">
+<img src="docs/badges/deepseek.svg" alt="model: DeepSeek V4 Flash (Max)">
+<img src="docs/badges/oh-my-openagent-harness.svg" alt="harness: Oh My OpenAgent">
 ```
 
 ## Deploying to a New Machine

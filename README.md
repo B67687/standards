@@ -27,11 +27,11 @@ Built with AI assistance — see [CREDITS.md](./CREDITS.md).
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/badges/deepseek-v4.svg">
-    <img alt="DeepSeek-V4" src="docs/badges/deepseek-v4.svg">
+    <img alt="model: DeepSeek V4 Flash (Max)" src="docs/badges/deepseek-v4.svg">
   </picture>
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/badges/oh-my-openagent-harness.svg">
-    <img alt="Oh-My-OpenAgent-harness" src="docs/badges/oh-my-openagent-harness.svg">
+    <img alt="harness: Oh My OpenAgent" src="docs/badges/oh-my-openagent-harness.svg">
   </picture>
 </p>
 

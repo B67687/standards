@@ -96,12 +96,12 @@ AI attribution is also **visual** — badges grouped under the "Built with AI as
 
 Generate badges using `scripts/generate-badge.sh` per the [badge-standard.md](./badge-standard.md):
 
-| Component | Label (full name) | Value (reasoning level) | Color | Example |
-|-----------|-------------------|------------------------|-------|---------|
-| AI Model | Full model name | Reasoning level / tier | Per-model color (below) | `deepseek-v4-flash` / `Max` on `#4f46e5` |
-| Harness | Harness name | `harness` | `#7f52ff` (purple) | `oh-my-openagent` / `harness` on `#7f52ff` |
+| Component | Label (category) | Value (name) | Color | Example |
+|-----------|-----------------|-------------|-------|---------|
+| AI Model | `model` | Full model name + tier in parens if subtier | Per-model color (below) | `model` / `DeepSeek V4 Flash (Max)` on `#4f46e5` |
+| Harness | `harness` | Harness display name | `#7f52ff` (purple) | `harness` / `Oh My OpenAgent` on `#7f52ff` |
 
-The label uses the full branded model name (e.g. "DeepSeek V4 Flash") and the value is the **reasoning level** — the model's capability tier (e.g. Max, Pro, Sonnet, Flash). This keeps the badge self-documenting — readers see exactly which model and which reasoning tier.
+The label is the **category** (`model`, `harness`), not the name. The value is the specific thing — the model name (with reasoning tier parenthesized when it's a subtier) or the harness name. This keeps all badges consistent: type on the left, name on the right.
 
 ### Per-Model Colors
 
@@ -165,16 +165,16 @@ Built with AI assistance — see [CREDITS.md](./CREDITS.md).
 ### Generator Commands
 
 ```bash
-# Model badge — label=full model name, value=reasoning level
+# Model badge — label=category, value=full model name
 bash scripts/generate-badge.sh \
-  --label "DeepSeek V4 Flash" \
-  --value "Max" \
+  --label "model" \
+  --value "DeepSeek V4 Flash (Max)" \
   --color "4f46e5"
 
-# Harness badge — label=harness name, value=harness
+# Harness badge — label=category, value=harness name
 bash scripts/generate-badge.sh \
-  --label "Oh My OpenAgent" \
-  --value "harness" \
+  --label "harness" \
+  --value "Oh My OpenAgent" \
   --color "7f52ff"
 ```
 

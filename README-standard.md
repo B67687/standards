@@ -70,11 +70,11 @@ Built with AI assistance — see [CREDITS.md](./CREDITS.md).
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/badges/deepseek-dark.svg">
-    <img src="docs/badges/deepseek.svg" alt="DeepSeek V4 Flash" />
+    <img src="docs/badges/deepseek.svg" alt="model: DeepSeek V4 Flash (Max)" />
   </picture>
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="docs/badges/oh-my-openagent-harness-dark.svg">
-    <img src="docs/badges/oh-my-openagent-harness.svg" alt="Oh My OpenAgent" />
+    <img src="docs/badges/oh-my-openagent-harness.svg" alt="harness: Oh My OpenAgent" />
   </picture>
 </p>
 ```
