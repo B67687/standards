@@ -23,4 +23,4 @@ jobs:
         run: gitleaks detect --source . -v 2>&1 || echo "gitleaks warnings found (non-blocking)"
 
       - name: Test — self-audit
-        run: ./scripts/audit.sh --exit-code .
+        run: SELF_CONSISTENCY_ACTIVE=1 ./scripts/audit.sh --exit-code .

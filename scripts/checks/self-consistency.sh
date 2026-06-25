@@ -35,9 +35,16 @@ checks_self_consistency() {
   export SELF_CONSISTENCY_ACTIVE=1
 
   # ── Check 1: Self-audit passes ─────────────────────────────────────────
-  local audit_result=0
-  bash "${repo}/scripts/audit.sh" --exit-code "${repo}" >/dev/null 2>&1 \
+  local audit_result=0 audit_out
+  audit_out="$(mktemp)" || audit_out="/tmp/self-consistency-audit"
+  bash "${repo}/scripts/audit.sh" --exit-code "${repo}" >"${audit_out}" 2>&1 \
     || audit_result=$?
+
+  if [ "${audit_result}" -ne 0 ]; then
+    echo "  Inner audit failed (exit ${audit_result}):" >&2
+    tail -10 "${audit_out}" >&2
+  fi
+  rm -f "${audit_out}"
 
   _check "self-audit-passes" \
     "Standards repo passes its own audit (./scripts/audit.sh --exit-code .)" \
