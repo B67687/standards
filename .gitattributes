@@ -1,1 +1,1 @@
-.env.encrypted diff=sopsdiffer
+*.encrypted diff=sopsdiffer
