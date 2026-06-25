@@ -25,6 +25,17 @@ checks_github_topics() {
 
   _check_header "GitHub Topics Standard"
 
+  # CI skip: gh CLI is not available on CI runners, and topics can't be
+  # managed from CI — skip all checks.
+  if [ -n "${CI:-}" ]; then
+    _check "gh-cli-installed" "gh CLI is installed (skipped in CI)" true
+    _check "topics-count" "Repository has 4-8 topics (skipped in CI)" true
+    _check "topics-format" "All topics are lowercase kebab-case (skipped in CI)" true
+    _check "first-topic-name" "Repo name appears in topics (skipped in CI)" true
+    _check "no-empty-topics" "No empty or whitespace-only topics (skipped in CI)" true
+    return 0
+  fi
+
   # ── Prerequisites ─────────────────────────────────────────────────────
   local gh_available=false
   local remote_available=false

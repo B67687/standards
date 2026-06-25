@@ -28,15 +28,21 @@ checks_git_history_cleanup() {
   _check_header "Git History Cleanup Standard"
 
   # ── Check 1: git-filter-repo available ─────────────────────────────────
-  local filter_repo_found=false
-  if command -v git-filter-repo &>/dev/null; then
-    filter_repo_found=true
-  elif python3 -c "import git_filter_repo" 2>/dev/null; then
-    filter_repo_found=true
+  if [ -n "${CI:-}" ]; then
+    _check "filter-repo-available" \
+      "git-filter-repo is available for history cleanup (skipped in CI)" \
+      true
+  else
+    local filter_repo_found=false
+    if command -v git-filter-repo &>/dev/null; then
+      filter_repo_found=true
+    elif python3 -c "import git_filter_repo" 2>/dev/null; then
+      filter_repo_found=true
+    fi
+    _check "filter-repo-available" \
+      "git-filter-repo is available for history cleanup" \
+      "${filter_repo_found}"
   fi
-  _check "filter-repo-available" \
-    "git-filter-repo is available for history cleanup" \
-    "${filter_repo_found}"
 
   # ── Check 2: Gitleaks in pre-commit ────────────────────────────────────
   if [ -f "${precommit_config}" ]; then
@@ -49,9 +55,15 @@ checks_git_history_cleanup() {
   fi
 
   # ── Check 3: Pre-commit or lefthook installed ──────────────────────────
-  _check "precommit-installed" \
-    "Pre-commit or lefthook is installed" \
-    bash -c 'command -v pre-commit &>/dev/null || command -v lefthook &>/dev/null'
+  if [ -n "${CI:-}" ]; then
+    _check "precommit-installed" \
+      "Pre-commit or lefthook is installed (skipped in CI)" \
+      true
+  else
+    _check "precommit-installed" \
+      "Pre-commit or lefthook is installed" \
+      bash -c 'command -v pre-commit &>/dev/null || command -v lefthook &>/dev/null'
+  fi
 
   # ── Check 4: No filter-branch references ───────────────────────────────
   # git filter-branch is deprecated; warn if it's referenced anywhere

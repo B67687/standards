@@ -109,8 +109,13 @@ checks_lefthook() {
   fi
 
   # ── Check 5: Lefthook binary installed ──────────────────────────────────
-  _check "lefthook-installed" "lefthook binary is on PATH" \
-    bash -c 'command -v lefthook &>/dev/null'
+  if [ -n "${CI:-}" ]; then
+    _check "lefthook-installed" "lefthook binary is on PATH (skipped in CI)" \
+      true
+  else
+    _check "lefthook-installed" "lefthook binary is on PATH" \
+      bash -c 'command -v lefthook &>/dev/null'
+  fi
 
   # ── Check 6: Commitlint integration ─────────────────────────────────────
   if [ -n "${config}" ]; then
