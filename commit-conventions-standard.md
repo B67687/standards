@@ -75,18 +75,22 @@ to eliminate code duplication across decoders.
 Closes #142
 ```
 
-### Co-authored-by (AI Attribution)
+### AI Attribution (Committer-Based)
 
-For AI-assisted commits, see [ai-attribution-standard.md](./ai-attribution-standard.md). Use the `Co-Authored-By:` format with a `.local` domain email — never use a routable email that could map to a GitHub account.
+For AI-assisted commits, see [ai-attribution-standard.md](./ai-attribution-standard.md). The AI harness becomes the **committer** with a `.local` email, and the model is recorded in an `AI-Model:` trailer:
 
 ```
-feat(core): add bus route caching
+Author:     B67687 <111849193+B67687@users.noreply.github.com>
+Committer:  OhMyOpenAgent <ohmyopenagent@local>
 
-Co-Authored-By: DeepSeek V4 Flash via oh-my-openagent
-  <deepseek-v4-flash+oh-my-openagent@models.local>
+    feat(core): add bus route caching
+
+    Bus arrival data is cached for 30s to reduce API calls.
+    
+    AI-Model: DeepSeek V4 Flash
 ```
 
-For human pair-programming, use the standard GitHub `Co-authored-by:` with the person's actual GitHub email.
+For human pair-programming, use the standard GitHub `Co-authored-by:` with the person's actual GitHub email. `Co-Authored-By:` is reserved for human collaboration only — never for AI attribution.
 
 ### Breaking Changes
 
@@ -123,7 +127,8 @@ git commit -S -m "feat: add bus route caching"
 AI-generated commit messages are permitted as long as they:
 - Pass commitlint validation (same rules as human-written)
 - Are reviewed by a human before committing
-- Include the AI attribution trailer per [ai-attribution-standard.md](./ai-attribution-standard.md)
+- Set the committer to the AI harness with a `.local` email per [ai-attribution-standard.md](./ai-attribution-standard.md)
+- Include an `AI-Model:` trailer identifying the model
 
 Recommended tools: `gh copilot suggest -t commit`, `aicommits`, or prompting an AI to format your diff as a conventional commit.
 

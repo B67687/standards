@@ -66,13 +66,15 @@ _parse_credits_models() {
   while IFS= read -r line; do
     # Match table data rows: | text | text | text | text |
     # Skip header and separator rows (contain only ---, Phase, Model)
-    if echo "${line}" | grep -qE '^\|[^|]+\|[^|]+\|[^|]+\|[^|]+\|$'; then
+    # Match 4+ data columns: Phase | Platform | Model | Harness | Role
+    if echo "${line}" | grep -qE '^\|([^|]+\|){4,}$'; then
       # Skip if it's the header row or separator row
       if echo "${line}" | grep -qiE 'Phase.*Model.*Harness.*Role|---'; then
         continue
       fi
-      # Extract column 2 (model) — remove leading/trailing whitespace
-      model="$(echo "${line}" | cut -d'|' -f3 | sed 's/^[[:space:]]*//; s/[[:space:]]*$//')"
+      # Extract column 3 (model) — remove leading/trailing whitespace
+      # Table format: Phase | Platform | Model | Harness | Role
+      model="$(echo "${line}" | cut -d'|' -f4 | sed 's/^[[:space:]]*//; s/[[:space:]]*$//')"
       [ -z "${model}" ] && continue
 
       # Strip reasoning level: "(max)", "(high reasoning)" etc.
@@ -99,9 +101,9 @@ outcome in ways neither of us predicted alone.
 
 ## AI Contributions
 
-| Phase | Model | Harness | Role |
-|-------|-------|---------|------|
-| Full development | (model name) | (harness name) | AI: implementation, research, & discussion · Human: oversight & goals |
+| Phase | Platform | Model | Harness | Role |
+|-------|----------|-------|---------|------|
+| Full development | (platform name) | (model name) | (harness name) | AI: implementation, research, & discussion · Human: oversight & goals |
 TEMPLATE
 }
 
@@ -120,11 +122,11 @@ checks_ai_attribution() {
   _check "credits-md-exists" "CREDITS.md exists at repo root" \
     test -f "${credits_file}"
 
-  # ── Check 2: CREDITS.md has 4-column table ─────────────────────────────
+  # ── Check 2: CREDITS.md has 5-column table ─────────────────────────────
   if [ -f "${credits_file}" ]; then
     _check "credits-md-format" \
-      "CREDITS.md has 4-column table (Phase, Model, Harness, Role)" \
-      grep -qE '^\|.*[Pp]hase.*\|.*[Mm]odel.*\|.*[Hh]arness.*\|.*[Rr]ole.*\|' \
+      "CREDITS.md has 5-column table (Phase, Platform, Model, Harness, Role)" \
+      grep -qE '^\|.*[Pp]hase.*\|.*[Pp]latform.*\|.*[Mm]odel.*\|.*[Hh]arness.*\|.*[Rr]ole.*\|' \
         "${credits_file}"
   else
     _check_fail "credits-md-format" "CREDITS.md not found"
