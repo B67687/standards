@@ -2,19 +2,10 @@
 
 # Standards
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/badges/standards.svg">
-  <img alt="standards-17" src="docs/badges/standards.svg">
-</picture>
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/badges/checks.svg">
-  <img alt="checks-89" src="docs/badges/checks.svg">
-</picture>
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/badges/license-mit.svg">
-  <img alt="license-MIT" src="docs/badges/license-mit.svg">
-</picture>
 <img src="https://github.com/B67687/Standards/actions/workflows/ci.yml/badge.svg" alt="CI">
+<img alt="standards: 18" src="docs/badges/standards.svg">
+<img alt="checks: 95" src="docs/badges/checks.svg">
+<img alt="license: MIT" src="docs/badges/license-mit.svg">
 
 Cross-repo conventions and audit system for AI-enhanced software projects.
 
@@ -25,15 +16,31 @@ Built with AI assistance — see [CREDITS.md](./CREDITS.md).
 </div>
 
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/badges/deepseek-v4.svg">
-    <img alt="model: DeepSeek V4 Flash (Max)" src="docs/badges/deepseek-v4.svg">
-  </picture>
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/badges/oh-my-openagent-harness.svg">
-    <img alt="harness: Oh My OpenAgent" src="docs/badges/oh-my-openagent-harness.svg">
-  </picture>
+  <img alt="model: DeepSeek V4 Flash (Max)" src="docs/badges/deepseek-v4.svg">
+  <img alt="harness: Oh My OpenAgent" src="docs/badges/oh-my-openagent-harness.svg">
 </p>
+
+## Quick start
+
+```bash
+# Audit the current directory
+./scripts/audit.sh
+
+# Audit + auto-fix (CREDITS.md, badges, README attribution)
+./scripts/audit.sh --fix /path/to/repo
+
+# Check a single standard, JSON output, exit 1 on failure
+./scripts/audit.sh --standard ai-attribution --report json --exit-code /path/to/repo
+
+# List all registered standards
+./scripts/audit.sh --list-standards
+
+# Batch audit all repos under a directory
+./scripts/audit-all.sh -d /path/to/projects
+
+# Generate dashboard from batch results
+./scripts/dashboard.sh
+```
 
 ## Architecture
 
@@ -57,28 +64,6 @@ standards/
 3. **Agent evals** extend shell checks for subjective judgments (README quality, badge accessibility, SVG correctness). Checks write structured JSON prompts; `agent-check.sh` collects them.
 4. **Audit runner** (`audit.sh`) discovers all check plugins, executes them against a repo, and produces terminal + JSON reports.
 5. **Dashboard** (`audit-all.sh` + `dashboard.sh`) runs batch audits across repos, aggregates into a compliance matrix, and generates a self-contained HTML dashboard.
-
-## Quick start
-
-```bash
-# Audit the current directory
-./scripts/audit.sh
-
-# Audit + auto-fix (CREDITS.md, badges, README attribution)
-./scripts/audit.sh --fix /path/to/repo
-
-# Check a single standard, JSON output, exit 1 on failure
-./scripts/audit.sh --standard ai-attribution --report json --exit-code /path/to/repo
-
-# List all registered standards
-./scripts/audit.sh --list-standards
-
-# Batch audit all repos under a directory
-./scripts/audit-all.sh -d /path/to/projects
-
-# Generate dashboard from batch results
-./scripts/dashboard.sh
-```
 
 ## Standards
 
