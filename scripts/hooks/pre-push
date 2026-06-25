@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+# pre-push — Integrity gate: verify every pushed commit has a valid signature.
+#
+# Force-push exception: rebase/filter-repo inherently strips signatures.
+# Force-push is an explicit dangerous action — unsigned commits are
+# allowed but warned about.
+
+set -euo pipefail
+
+zero_sha="0000000000000000000000000000000000000000"
+
+check_commit() {
+    local commit="$1"
+    local is_force="$2"   # "true" | "false"
+    local sig subject
+
+    sig="$(git show -s --format='%G?' "$commit")"
+    subject="$(git show -s --format='%h %s' "$commit")"
+
+    if [[ "$sig" != "G" ]]; then
+        if [[ "$is_force" == "true" ]]; then
+            echo "  [unsigned, force push] $subject" >&2
+            return 0
+        fi
+        {
+            echo "Blocked push: commit is not locally verified as a good signature."
+            echo "  Commit:    $subject"
+            echo "  Signature: $sig"
+            echo "  Sign all commits with: git rebase --root -S --rebase-merges"
+        } >&2
+        exit 1
+    fi
+}
+
+while read -r local_ref local_sha remote_ref remote_sha; do
+    [[ -z "${local_ref:-}" ]] && continue
+
+    if [[ "$local_sha" == "$zero_sha" ]]; then
+        # Deleting a ref — nothing to check
+        continue
+    fi
+
+    # Detect force-push: remote exists AND remote SHA is not ancestor of local SHA
+    is_force="false"
+    if [[ "$remote_sha" != "$zero_sha" ]] && \
+       ! git merge-base --is-ancestor "$remote_sha" "$local_sha" 2>/dev/null; then
+        is_force="true"
+    fi
+
+    while read -r commit; do
+        [[ -n "$commit" ]] && check_commit "$commit" "$is_force"
+    done < <(git rev-list "$local_sha" --not --remotes)
+done

@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# prepare-commit-msg — AI-Model trailer hook.
+#
+# Sourced from the canonical scripts/prepare-commit-msg.
+# This is the git hook entry point; the real logic lives in the repo script.
+
+REPO_ROOT="$(git rev-parse --show-toplevel 2>/dev/null)"
+if [ -n "$REPO_ROOT" ] && [ -x "$REPO_ROOT/scripts/prepare-commit-msg" ]; then
+  exec "$REPO_ROOT/scripts/prepare-commit-msg" "$@"
+fi
+
+# Fallback: if the repo script is missing, pass through silently
+exit 0

@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+# pre-commit — Config-driven identity gate.
+#
+# Enforces the configured git identity ONLY when git config is set:
+#   git config hooks.allowed-committer-name  "regex pattern"
+#   git config hooks.allowed-committer-email "regex pattern"
+#
+# If NEITHER is set → no enforcement (pass through).
+# If one is set → only that field is checked.
+# If both are set → both must match.
+#
+# Reads from git config (user.name/user.email), not environment.
+# GIT_COMMITTER_* env vars are sanitized by git when running hooks,
+# so we check the configured identity that would be used by default.
+#
+# Usage:
+#   # Allow only B67687
+#   git config hooks.allowed-committer-name "B67687"
+#   git config hooks.allowed-committer-email ".*@users\.noreply\.github\.com"
+#
+#   # Allow multiple (regex alternation)
+#   git config hooks.allowed-committer-name "B67687|DeepSeek-V4-Flash \(AI\)"
+#
+#   # No enforcement (default)
+#   # Don't set any hooks.allowed-committer-* config
+
+set -euo pipefail
+
+allowed_name_pattern="$(git config hooks.allowed-committer-name 2>/dev/null || true)"
+allowed_email_pattern="$(git config hooks.allowed-committer-email 2>/dev/null || true)"
+
+# No config → no enforcement
+if [ -z "$allowed_name_pattern" ] && [ -z "$allowed_email_pattern" ]; then
+  exit 0
+fi
+
+# Read configured identity from git config (not env — git sanitizes GIT_COMMITTER_*)
+configured_name="$(git config user.name 2>/dev/null || true)"
+configured_email="$(git config user.email 2>/dev/null || true)"
+
+fail=false
+
+if [ -n "$allowed_name_pattern" ]; then
+  if ! printf '%s' "$configured_name" | grep -qE "$allowed_name_pattern"; then
+    echo "Blocked: configured user.name does not match hooks.allowed-committer-name" >&2
+    echo "  Configured name:  $configured_name" >&2
+    echo "  Expected pattern: $allowed_name_pattern" >&2
+    echo "" >&2
+    echo "Fix: git config user.name '<allowed-name>'" >&2
+    fail=true
+  fi
+fi
+
+if [ -n "$allowed_email_pattern" ]; then
+  if ! printf '%s' "$configured_email" | grep -qE "$allowed_email_pattern"; then
+    echo "Blocked: configured user.email does not match hooks.allowed-committer-email" >&2
+    echo "  Configured email: $configured_email" >&2
+    echo "  Expected pattern: $allowed_email_pattern" >&2
+    echo "" >&2
+    echo "Fix: git config user.email '<allowed-email>'" >&2
+    fail=true
+  fi
+fi
+
+if [ "$fail" = true ]; then
+  exit 1
+fi
