@@ -154,6 +154,45 @@ sops edit .env.encrypted
 
 If secrets were ever committed to git, assume they're compromised. Rotate all credentials and regenerate keys.
 
+## Complementary Tools: Gitleaks
+
+While sops/age encrypts `.env` files at rest, **[Gitleaks](https://github.com/gitleaks/gitleaks)** detects accidentally committed secrets by scanning git history.
+
+### Recommended: Gitleaks Pre-Commit Hook
+
+Add Gitleaks as a pre-commit hook to catch secrets before they reach the index:
+
+```yaml
+# .pre-commit-config.yaml
+repos:
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.20.0
+    hooks:
+      - id: gitleaks
+```
+
+If using lefthook:
+
+```yaml
+# lefthook.yml
+pre-commit:
+  commands:
+    secrets:
+      run: gitleaks protect --staged --verbose
+```
+
+### CI Integration
+
+Run Gitleaks in CI for an additional safety net (catches secrets that bypass local hooks):
+
+```yaml
+# .github/workflows/ci.yml
+- name: Gitleaks secrets scan
+  run: gitleaks detect --no-git --verbose
+```
+
+The `--no-git` flag scans files in the working tree without needing the full git history. Use `gitleaks detect` (full history scan) for a thorough audit on release branches.
+
 ## Reference
 
 - [sops documentation](https://getsops.io/docs/)

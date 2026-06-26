@@ -194,12 +194,12 @@ docs/diagrams/      → SVG architecture diagrams
 
 | Component | Standard | Applies To |
 |-----------|----------|------------|
-| Badges | `docs/badge-standard.md` | README tech badge header |
-| AI Attribution | `docs/ai-attribution-pattern.md` | CREDITS.md + AI attribution badges |
-| SVG Screenshots | `docs/svg-screenshots-standard.md` | Images in Screenshots section |
-| SVG Diagrams | `bus-hop/docs/svg-standards.md` | Architecture diagram section |
-| Changelog | `docs/changelog-standard.md` | Changelog link section |
-| Repository Structure | `docs/repo-structure-standard.md` | `docs/` subdirectory layout |
+| Badges | `docs/standards/badge-standard.md` | README tech badge header |
+| AI Attribution | `docs/research/ai-attribution-pattern.md` | CREDITS.md + AI attribution badges |
+| SVG Screenshots | `docs/standards/svg-screenshots-standard.md` | Images in Screenshots section |
+| SVG Diagrams | `bus-hop/docs/research/svg-standards.md` | Architecture diagram section |
+| Changelog | `docs/standards/changelog-standard.md` | Changelog link section |
+| Repository Structure | `docs/standards/repo-structure-standard.md` | `docs/` subdirectory layout |
 
 ## References
 

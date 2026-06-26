@@ -312,7 +312,7 @@
 **Source**: No formal spec for meta-standards. Dogfooding is a well-established pattern: Rust self-hosting (compiler written in Rust since 2011), ESLint/linting self-audit.
 **Status**: Our concept of a standard requiring the repo to pass its own audit is novel. No formal equivalent exists.
 
-**Key finding**: The `self-consistency-standard.md` + `scripts/checks/self-consistency.sh` + `SELF_CONSISTENCY_ACTIVE` guard pattern is unique. The closest industry parallel is Rust's bootstrap compiler (rustc compiled by itself).
+**Key finding**: The `docs/standards/self-consistency-standard.md` + `scripts/checks/self-consistency.sh` + `SELF_CONSISTENCY_ACTIVE` guard pattern is unique. The closest industry parallel is Rust's bootstrap compiler (rustc compiled by itself).
 
 **Recommendation**: **ADOPT** — this is a unique strength. Document it as reference pattern for other meta-standards projects.
 

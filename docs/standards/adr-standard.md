@@ -50,6 +50,7 @@ Proposed → Accepted → Superseded
 
 **Date:** YYYY-MM-DD
 **Status:** Accepted
+**Last Reviewed:** YYYY-MM-DD
 
 ## Context
 
@@ -79,6 +80,7 @@ Briefly note what else was explored and why it wasn't chosen (optional).
 
 **Date:** 2026-06-17
 **Status:** Accepted
+**Last Reviewed:** 2026-06-17
 
 ## Context
 
@@ -105,6 +107,14 @@ It's the de facto industry convention.
 - Auto-generated from conventional commits: too impersonal
 - No changelog (rely on git log): not user-friendly
 ```
+
+## Last Reviewed
+
+Every ADR MUST include a `**Last Reviewed:**` date field alongside `**Date:**` and `**Status:**`. This field records when the ADR was last reviewed for continued relevance.
+
+- **On creation:** Set `Last Reviewed` equal to `Date`
+- **On review:** Update `Last Reviewed` to the current date when reviewing (but do NOT change the `Date` — that's the decision date)
+- **Purpose:** Stale ADRs are worse than no ADRs. A Last Reviewed date makes it obvious when an ADR hasn't been looked at in years.
 
 ## Superseding
 

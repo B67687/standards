@@ -4,7 +4,12 @@
 
 ### Added
 
-- Self-Consistency meta-standard: standards repo must pass its own audit (`self-consistency-standard.md` + `scripts/checks/self-consistency.sh`)
+- Language Standard (American English): `docs/standards/language-standard.md` + `scripts/checks/language.sh` with 7 sub-checks (American spelling enforcement)
+- ADR Standard: Added `**Last Reviewed:**` date field to template and `adr.sh` check 6 (6 checks total)
+- Agent Evaluation Standard: New standard documenting LLM-as-judge methodology with bias mitigation strategies (position bias, verbosity bias, self-preference, calibration drift)
+- `docs/standards/secrets-management-standard.md`: Added Gitleaks pre-commit hook recommendation section (`.pre-commit-config.yaml` and lefthook patterns)
+- `docs/standards/repo-structure-standard.md`: Added Go-specific layout variant (`cmd/`, `pkg/`, `internal/`, `go.mod`)
+- Self-Consistency meta-standard: standards repo must pass its own audit (`docs/standards/self-consistency-standard.md` + `scripts/checks/self-consistency.sh`)
 - `Makefile` at repo root with `audit`, `shellcheck`, `check` targets
 - `mise.toml` at repo root with tool version manifest
 - Git Identity Security Standard: config-driven committer enforcement, SSH signing, useConfigOnly, gpgsign (7 checks)
@@ -16,15 +21,23 @@
 
 ### Changed
 
+- `docs/standards/gitignore-standard.md`: Trimmed from 522 to ~100 lines (removed language-specific lists, refer to github/gitignore)
+- `docs/standards/git-history-cleanup-standard.md`: Trimmed from 492 to 118 lines (removed CLI reference, linked to filter-repo docs)
+- `docs/standards/repo-structure-standard.md`: Trimmed from 295 to 165 lines (removed full file lists, concise with examples)
+- `docs/standards/ai-attribution-standard.md`: Trimmed from 289 to 140 lines (removed tutorial prose, focused on rules)
+- `docs/standards/ci-pipeline-standard.md`: Trimmed from 276 to 130 lines (removed CI provider comparisons, linked to docs)
+- `docs/standards/changelog-standard.md`: Trimmed from 253 to 140 lines (removed full keepachangelog.com excerpt, linked)
 - `scripts/checks/lefthook.sh`: Now passes if `.pre-commit-config.yaml` exists (alternative hook manager)
 - `scripts/checks/trivy-secrets.sh`: Now passes if gitleaks is configured in hooks or CI (alternative secret scanner)
 - `.gitignore`: Whitelisted `Makefile` and `mise.toml`
-- `README.md`: Updated standards table (25 standards, 131 checks)
-- `docs/badges/standards.svg`: Updated from 18 to 25
-- `docs/badges/checks.svg`: Updated from 95 to 131
+- `README.md`: Updated standards table (27 standards, 137 checks), fixed prose numbers
+- `docs/badges/standards.svg`: Updated from 24 to 27
+- `docs/badges/checks.svg`: Updated from 121 to 137
 - `cross-repo-standards.md`: Added Self-Consistency to Future Candidates
 - `.github/workflows/ci.yml`: Added gitleaks secrets scanning step (was pre-commit only)
 - `.gitattributes`: Broadened `sopsdiffer` pattern from `.env.encrypted` to `*.encrypted`
+- All standard documents moved from root to `docs/standards/`; research/pattern docs to `docs/research/`
+- Updated all cross-references across README, CHANGELOG, HANDOVER, and standard docs to reflect new paths
 
 ### Fixed
 

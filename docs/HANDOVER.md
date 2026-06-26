@@ -19,7 +19,7 @@ The standards repo started as documentation — 16 well-written standards coveri
 | Problem | Example |
 |---------|---------|
 | No single "audit" command | Can't run `./check.sh bus-hop` to see which standards it violates |
-| Most standards are docs only | `repo-structure-standard.md` says what to do, but nothing checks it |
+| Most standards are docs only | `docs/standards/repo-structure-standard.md` says what to do, but nothing checks it |
 | Enforcement is per-hook/per-repo | `commit-msg` hook only targets `agentic-workflows` |
 | No "apply" automation | Applying a standard to a new repo is manual copy-paste |
 | Cross-repo inventory is static | `cross-repo-standards.md` must be hand-updated |
@@ -55,7 +55,7 @@ Three approaches, pick one or hybrid:
 **My recommendation: C (Hybrid).** Shell scripts for "does file X exist?", "does Y have the right format?", agent for "does this README follow the section order standard?"
 
 ### 2. Start with one standard to enforce (suggested)
-**Start with `ai-attribution-standard.md`.** It's the most mature, already has tooling (hooks + badge generator), and affects every repo. A win here proves the pattern.
+**Start with `docs/standards/ai-attribution-standard.md`.** It's the most mature, already has tooling (hooks + badge generator), and affects every repo. A win here proves the pattern.
 
 Implementation checkpoints:
 - [ ] `scripts/audit-attribution.sh <repo>` — checks CREDITS.md exists, has correct format, AI trailers present, badges in README
@@ -105,12 +105,12 @@ All binaries in `~/.local/bin/` (already on `$PATH`). Mise auto-activates in new
 
 | Tool | Standard(s) It Touches | What to Do |
 |------|----------------------|-----------|
-| **mise** | New: `tool-versions-standard.md` | Define a standard for `.mise.toml` across repos — which tools, which versions, which plugins |
-| **sops/age** | `gitignore-standard.md` | Add `.env` (unencrypted) to gitignore pattern; define `.env.enc` convention |
-| **lefthook** | `auto-commit-gitops-standard.md`, `ci-pipeline-standard.md` | Evaluate vs. existing pre-commit hooks. Lefthook is simpler, parallel, no Python deps. Could replace `.pre-commit-config.yaml`. |
-| **go-task** | `repo-structure-standard.md` | Propose `Taskfile.yml` as the standard task runner. The `task --list` output is agent-discoverable. Existing Makefiles could be migrated. |
-| **trivy** | `ci-pipeline-standard.md` | Add a `trivy` check plugin to the audit framework (`scripts/checks/ci-pipeline.sh`). Scan for secrets leaks + vulns. |
-| **git-cliff** | `changelog-standard.md` | `git-cliff -o CHANGELOG.md` is the canonical generation command. Standardize `cliff.toml` config across repos. The current changelog check plugin should verify CLIFF-generated format. |
+| **mise** | New: `docs/standards/tool-versions-standard.md` | Define a standard for `.mise.toml` across repos — which tools, which versions, which plugins |
+| **sops/age** | `docs/standards/gitignore-standard.md` | Add `.env` (unencrypted) to gitignore pattern; define `.env.enc` convention |
+| **lefthook** | `docs/standards/auto-commit-gitops-standard.md`, `docs/standards/ci-pipeline-standard.md` | Evaluate vs. existing pre-commit hooks. Lefthook is simpler, parallel, no Python deps. Could replace `.pre-commit-config.yaml`. |
+| **go-task** | `docs/standards/repo-structure-standard.md` | Propose `Taskfile.yml` as the standard task runner. The `task --list` output is agent-discoverable. Existing Makefiles could be migrated. |
+| **trivy** | `docs/standards/ci-pipeline-standard.md` | Add a `trivy` check plugin to the audit framework (`scripts/checks/ci-pipeline.sh`). Scan for secrets leaks + vulns. |
+| **git-cliff** | `docs/standards/changelog-standard.md` | `git-cliff -o CHANGELOG.md` is the canonical generation command. Standardize `cliff.toml` config across repos. The current changelog check plugin should verify CLIFF-generated format. |
 
 ### Integration Points with Existing Audit Framework
 
@@ -145,12 +145,12 @@ See `agentic-workflows/dev/TOOLKIT_QUICKSTART.md` for detailed usage examples.
 # Start here to understand the full scope:
 code README.md              # Index of all standards
 code cross-repo-standards.md  # Which repos have what
-code 0-meta-standards.md    # The philosophy
+code docs/standards/0-meta-standards.md    # The philosophy
 
 # Then the priority implementation targets:
-code ai-attribution-standard.md  # Most mature, best starting point
-code ci-pipeline-standard.md      # Has the 3-stage model
-code auto-commit-gitops-standard.md  # Current enforcement architecture
+code docs/standards/ai-attribution-standard.md  # Most mature, best starting point
+code docs/standards/ci-pipeline-standard.md      # Has the 3-stage model
+code docs/standards/auto-commit-gitops-standard.md  # Current enforcement architecture
 
 # Reference the existing scripts:
 ls scripts/

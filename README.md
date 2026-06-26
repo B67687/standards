@@ -3,13 +3,13 @@
 # Standards
 
 <img src="https://github.com/B67687/Standards/actions/workflows/ci.yml/badge.svg" alt="CI">
-<img alt="standards: 25" src="docs/badges/standards.svg">
-<img alt="checks: 131" src="docs/badges/checks.svg">
+<img alt="standards: 27" src="docs/badges/standards.svg">
+<img alt="checks: 137" src="docs/badges/checks.svg">
 <img alt="license: MIT" src="https://img.shields.io/github/license/B67687/Standards">
 
 A framework of cross-repo conventions with automated shell-based audit enforcement for AI-enhanced software projects.
 
-**25 standards** defining convention rules for repos. **131 automated checks** enforce them. **Dashboard** tracks compliance across all repos.
+**27 standards** defining convention rules for repos. **137 automated checks** enforce them. **Dashboard** tracks compliance across all repos.
 
 Built with AI assistance — see [CREDITS.md](./CREDITS.md).
 
@@ -61,7 +61,7 @@ standards/
 
 ### How it works
 
-1. **Standard documents** (`*-standard.md`) define each convention's rules, rationale, and success criteria.
+1. **Standard documents** (`docs/standards/*-standard.md`) define each convention's rules, rationale, and success criteria.
 2. **Check scripts** (`scripts/checks/*.sh`) implement deterministic tests for each rule — file existence, grep patterns, format validation via shell.
 3. **Agent evals** extend shell checks for subjective judgments (README quality, badge accessibility, SVG correctness). Checks write structured JSON prompts; `agent-check.sh` collects them.
 4. **Audit runner** (`audit.sh`) discovers all check plugins, executes them against a repo, and produces terminal + JSON reports.
@@ -71,31 +71,35 @@ standards/
 
 | Standard | File | Checks |
 |----------|------|-------|
-| ADR | `adr-standard.md` | 5 |
-| AI Attribution | `ai-attribution-standard.md` | 6 |
-| Auto-Commit GitOps | `auto-commit-gitops-standard.md` | 6 |
-| Badge (shell) | `badge-standard.md` | 5 |
-| Badge Quality (agent) | `badge-standard.md` | 3 |
-| Changelog | `changelog-standard.md` | 6 |
-| CI Pipeline | `ci-pipeline-standard.md` | 6 |
-| Commit Conventions | `commit-conventions-standard.md` | 6 |
-| CS Project Architecture | `cs-project-architecture-standard.md` | 4 |
-| Git History Cleanup | `git-history-cleanup-standard.md` | 5 |
-| GitHub Topics | `github-topics-standard.md` | 5 |
-| .gitignore | `gitignore-standard.md` | 7 |
-| Lefthook | `auto-commit-gitops-standard.md` | 6 |
-| License | `license-standard.md` | 4 |
-| Naming Conventions | `naming-conventions-standard.md` | 5 |
-| Path Agnosticism | `path-agnosticism-standard.md` | 4 |
-| README Quality | `README-standard.md` | 8 |
-| Repo Structure | `repo-structure-standard.md` | 7 |
-| Secrets Management (sops/age) | `secrets-management-standard.md` | 4 |
-| SVG Screenshots | `svg-screenshots-standard.md` | 5 |
-| Tool Versions (mise) | `tool-versions-standard.md` | 5 |
-| Trivy Secrets | `ci-pipeline-standard.md` | 5 |
-| Self-Consistency | `self-consistency-standard.md` | 1 |
+| ADR | `docs/standards/adr-standard.md` | 6 |
+| Agent Evaluation | `docs/standards/agent-evaluation-standard.md` | 0 |
+| AI Attribution | `docs/standards/ai-attribution-standard.md` | 6 |
+| Auto-Commit GitOps | `docs/standards/auto-commit-gitops-standard.md` | 6 |
+| Badge (shell) | `docs/standards/badge-standard.md` | 5 |
+| Badge Quality (agent) | `docs/standards/badge-standard.md` | 3 |
+| Changelog | `docs/standards/changelog-standard.md` | 6 |
+| CI Pipeline | `docs/standards/ci-pipeline-standard.md` | 6 |
+| Commit Conventions | `docs/standards/commit-conventions-standard.md` | 6 |
+| CS Project Architecture | `docs/standards/cs-project-architecture-standard.md` | 4 |
+| Git History Cleanup | `docs/standards/git-history-cleanup-standard.md` | 5 |
+| Git Identity Security | `docs/standards/git-identity-security-standard.md` | 6 |
+| GitHub Topics | `docs/standards/github-topics-standard.md` | 5 |
+| .gitignore | `docs/standards/gitignore-standard.md` | 7 |
+| Language | `docs/standards/language-standard.md` | 7 |
+| Lefthook | `docs/standards/auto-commit-gitops-standard.md` | 6 |
+| License | `docs/standards/license-standard.md` | 4 |
+| Naming Conventions | `docs/standards/naming-conventions-standard.md` | 5 |
+| Path Agnosticism | `docs/standards/path-agnosticism-standard.md` | 4 |
+| README Quality | `docs/standards/README-standard.md` | 8 |
+| Repo Structure | `docs/standards/repo-structure-standard.md` | 7 |
+| Safe Wrappers | `docs/standards/safe-wrappers-standard.md` | 4 |
+| Secrets Management (sops/age) | `docs/standards/secrets-management-standard.md` | 4 |
+| SVG Screenshots | `docs/standards/svg-screenshots-standard.md` | 5 |
+| Tool Versions (mise) | `docs/standards/tool-versions-standard.md` | 5 |
+| Trivy Secrets | `docs/standards/ci-pipeline-standard.md` | 5 |
+| Self-Consistency | `docs/standards/self-consistency-standard.md` | 1 |
 
-**Total: 23 standards, 120 checks** (106 shell + 9 agent-pending + 5 tool-availability)
+**Total: 27 standards, 137 checks**
 
 ## CI / exit codes
 

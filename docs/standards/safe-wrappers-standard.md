@@ -84,5 +84,5 @@ The audit verifies:
 
 ## See Also
 
-- [Git Identity Security Standard](git-identity-security-standard.md) — identity enforcement and signing
+- [Git Identity Security Standard](docs/standards/git-identity-security-standard.md) — identity enforcement and signing
 - `scripts/hooks/pre-commit` — hook-level identity gate

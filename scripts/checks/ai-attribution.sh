@@ -21,7 +21,7 @@ set -euo pipefail
 # ── Register this standard ────────────────────────────────────────────────
 ALL_STANDARDS+=("ai-attribution")
 
-# ── Per-model badge colours (from ai-attribution-standard.md) ─────────────
+# ── Per-model badge colours (from docs/standards/ai-attribution-standard.md) ─────────────
 # Keys are lowercase prefix matches; longer prefixes tried first.
 declare -A MODEL_COLORS
 MODEL_COLORS["deepseek"]="4f46e5"   # indigo

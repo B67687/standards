@@ -9,6 +9,7 @@
 #   3. ADR filenames follow YYYY-MM-DD-title-in-kebab-case.md pattern
 #   4. Each ADR file contains **Status:** field
 #   5. Each ADR file contains ## Context section
+#   6. Each ADR file contains **Last Reviewed:** field
 #
 # Audit-only — no fix functions.
 
@@ -111,5 +112,26 @@ checks_adr() {
     fi
     _check "adr-context-section" "${context_desc}" \
       test -z "${missing_context}"
+  fi
+
+  # ── Check 6: ADR last-reviewed field ──────────────────────────────────
+  if [ ! -d "${adr_dir}" ]; then
+    _check_fail "adr-last-reviewed" "docs/adr/ not found"
+  elif [ "${adr_count}" -eq 0 ]; then
+    _check_fail "adr-last-reviewed" "No ADR files found"
+  else
+    local missing_reviewed=""
+    local f
+    for f in "${adr_files[@]}"; do
+      if ! grep -qE '\*\*Last Reviewed:\*\*' "${f}" 2>/dev/null; then
+        missing_reviewed="${missing_reviewed} $(basename "${f}")"
+      fi
+    done
+    local reviewed_desc="All ADR files contain **Last Reviewed:** field"
+    if [ -n "${missing_reviewed}" ]; then
+      reviewed_desc="ADR files missing **Last Reviewed:** field:${missing_reviewed}"
+    fi
+    _check "adr-last-reviewed" "${reviewed_desc}" \
+      test -z "${missing_reviewed}"
   fi
 }

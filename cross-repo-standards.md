@@ -97,7 +97,7 @@ See `docs/ai-attribution-pattern.md` for the full standard.
 
 ### Standard
 
-`docs/badge-standard.md` + `scripts/generate-badge.sh`
+`docs/standards/badge-standard.md` + `scripts/generate-badge.sh`
 
 - **Format:** shields.io-style inline SVG (two-part: dark label + colored value)
 - **Storage:** `docs/badges/*.svg` committed as static files (no external badge service)
@@ -113,7 +113,7 @@ See `docs/ai-attribution-pattern.md` for the full standard.
 
 ### Standard
 
-`docs/README-standard.md`
+`docs/standards/README-standard.md`
 
 - **Section order codified:** Title → Badges → Description → AI Attribution → Features → Quick Start → Usage → Architecture → ... → License (always last)
 - **Badge header:** centered `<img>` row with `docs/badges/` SVGs
@@ -126,7 +126,7 @@ See `docs/ai-attribution-pattern.md` for the full standard.
 
 ## Target 5: Local CI Pipeline
 
-**Status:** 🟢 **Standard defined — 3-stage model with local review.sh + cron (see docs/ci-pipeline-standard.md)**
+**Status:** 🟢 **Standard defined — 3-stage model with local review.sh + cron (see docs/standards/ci-pipeline-standard.md)**
 
 ### Reference Pipeline (ithmb-codec)
 
@@ -162,7 +162,7 @@ See `docs/ai-attribution-pattern.md` for the full standard.
 
 ### Standard
 
-`docs/changelog-standard.md`
+`docs/standards/changelog-standard.md`
 
 - **Format:** Keep a Changelog + SemVer
 - **File:** `CHANGELOG.md` in repo root
@@ -176,7 +176,7 @@ See `docs/ai-attribution-pattern.md` for the full standard.
 
 ## Target 7: SVG Screenshots
 
-**Status:** 🟢 **Standard defined — 3 types (mobile, CLI terminal, web) with dark mode support (see docs/svg-screenshots-standard.md)**
+**Status:** 🟢 **Standard defined — 3 types (mobile, CLI terminal, web) with dark mode support (see docs/standards/svg-screenshots-standard.md)**
 
 ### Current Screenshot Approach
 
@@ -390,10 +390,10 @@ Scripts for applying standards are in `./scripts/`.
 | Code Review Standards | 🟡 | 🔴 Review checklist (future use) |
 | ADR Standards | ✅ | 🟢 Done |
 | Beyond-README Docs | ✅ | 🔴 When to split into ARCHITECTURE.md, DEVELOPMENT.md |
-| Tool Versions (mise) | ✅ | 🟢 Done — `tool-versions-standard.md` |
-| Secrets Management (sops/age) | 🟡 | 🟢 Done — `secrets-management-standard.md`, check pending |
-| Lefthook (hooks) | ✅ | 🟢 Alternatives in `ci-pipeline-standard.md` + `auto-commit-gitops-standard.md` |
-| Trivy (secrets) | ✅ | 🟢 Alternatives in `ci-pipeline-standard.md` |
-| Git-Cliff (changelog) | ✅ | 🟢 Mentioned in `changelog-standard.md` |
-| Go-Task (runner) | ✅ | 🟢 Mentioned in `repo-structure-standard.md` |
-| Self-Consistency | ✅ | 🟢 Done — `self-consistency-standard.md` |
+| Tool Versions (mise) | ✅ | 🟢 Done — `docs/standards/tool-versions-standard.md` |
+| Secrets Management (sops/age) | 🟡 | 🟢 Done — `docs/standards/secrets-management-standard.md`, check pending |
+| Lefthook (hooks) | ✅ | 🟢 Alternatives in `docs/standards/ci-pipeline-standard.md` + `docs/standards/auto-commit-gitops-standard.md` |
+| Trivy (secrets) | ✅ | 🟢 Alternatives in `docs/standards/ci-pipeline-standard.md` |
+| Git-Cliff (changelog) | ✅ | 🟢 Mentioned in `docs/standards/changelog-standard.md` |
+| Go-Task (runner) | ✅ | 🟢 Mentioned in `docs/standards/repo-structure-standard.md` |
+| Self-Consistency | ✅ | 🟢 Done — `docs/standards/self-consistency-standard.md` |
