@@ -33,9 +33,9 @@ Short description (≤120 chars, no heading)
   4. AI Attribution + AI Model Badges ("Built with AI assistance" + model/harness badges)
   5. Acknowledgements Callout (if applicable — see §Acknowledgements)
   6. Screenshots / Demo (apps only — near top)
-  7. Table of Contents (required if >100 lines)
-  8. Features / What It Does
-  9. Quick Start / Installation
+   7. Table of Contents (required if >100 lines)
+   8. Quick Start / Installation
+   9. Features / What It Does
  10. Usage / Examples
  11. Architecture (libraries/harnesses — with SVG diagram)
  12. Contributing (required — state PR policy, where to ask questions)

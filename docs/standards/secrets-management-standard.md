@@ -159,6 +159,19 @@ sops edit .env.encrypted
 
 If secrets were ever committed to git, assume they're compromised. Rotate all credentials and regenerate keys.
 
+## Secrets Vaults
+
+For teams with multiple environments (dev/staging/prod) or shared secrets across repos, consider a **secrets vault** instead of (or alongside) sops:
+
+| Vault | Use Case | Best For |
+|-------|----------|----------|
+| **GitHub Actions Secrets** | Per-repo secrets injected as env vars at CI runtime | CI-only secrets, no local dev needed |
+| **HashiCorp Vault** | Dynamic secrets, rotation policies, audit logging | Enterprise, multi-service, zero-trust |
+| **Doppler** | Environment-wide secret sync with CLI + CI integration | Teams that need per-environment config without managing keys |
+| **1Password CLI** | Developer-friendly, syncs with team vault | Small teams already using 1Password |
+
+**Rule of thumb:** sops/age for per-repo secrets committed to git (our standard); vault for secrets that change per-environment or must be rotated centrally. Both can coexist — use sops for `.env.encrypted` in git and vault for CI runtime secrets.
+
 ## Complementary Tools: Gitleaks
 
 While sops/age encrypts `.env` files at rest, **[Gitleaks](https://github.com/gitleaks/gitleaks)** detects accidentally committed secrets by scanning git history.

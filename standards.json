@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated": "2026-06-26T11:00:15Z",
+  "generated": "2026-06-27T04:31:47Z",
   "standards": [
     {"id":"adr","name":"ADR Standard","description":"An Architecture Decision Record captures a significant decision: context, decision, rationale, and consequences. It preserves the \"why\" across time and across context resets.","domains":"docs","check_count":15,"doc":"/home/nami/projects/dev/standards/docs/standards/adr-standard.md"},
     {"id":"ai-attribution","name":"AI Attribution Standard","description":"AI-assisted development is the norm across all projects in this org. Commits should be **transparent** about which tool and model produced them, but **never pollute** GitHub contributor stats with fake accounts or co-authors that aren't real people.","domains":"ai,universal","check_count":11,"doc":"/home/nami/projects/dev/standards/docs/standards/ai-attribution-standard.md"},

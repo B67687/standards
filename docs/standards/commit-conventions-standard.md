@@ -99,7 +99,7 @@ For human pair-programming, use the standard GitHub `Co-authored-by:` with the p
 
 ### Breaking Changes
 
-Mark with `BREAKING CHANGE:` in the footer or a `!` after the type/scope:
+Mark with `BREAKING CHANGE:` (or `BREAKING-CHANGE:` as hyphenated alias) in the footer or a `!` after the type/scope:
 
 ```
 feat(api)!: change response format
@@ -149,7 +149,7 @@ Recommended tools: `gh copilot suggest -t commit`, `aicommits`, or prompting an 
 All repos use `.commitlintrc.json` with these allowed types:
 
 ```
-feat, fix, docs, refactor, perf, test, chore, cleanup, security, revert
+feat, fix, docs, refactor, perf, test, build, style, ci, chore, cleanup, security, revert
 ```
 
 This is enforced:

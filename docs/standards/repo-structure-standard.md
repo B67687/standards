@@ -30,8 +30,10 @@ docs/
 ```
 README.md         # Project description, badges, quick start
 CHANGELOG.md      # Keep a Changelog format
-CREDITS.md        # AI attribution
+CONTRIBUTING.md   # PR policy, code standards, workflow
 LICENSE           # MIT for public repos
+SECURITY.md       # Vulnerability disclosure policy (recommended)
+CREDITS.md        # AI attribution
 .editorconfig     # Editor settings (indent, charset, line endings)
 .gitignore        # Whitelist (gitaccept) pattern
 mise.toml         # Tool version management (mise)

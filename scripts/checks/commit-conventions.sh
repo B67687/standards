@@ -75,7 +75,7 @@ checks_commit_conventions() {
       local ctype
       ctype="$(echo "${subject}" | tr '[:upper:]' '[:lower:]' | sed -n 's/^\([a-z]\+\).*/\1/p')"
       if [ -n "${ctype}" ]; then
-        if ! echo "${ctype}" | grep -qE '^(feat|fix|docs|refactor|perf|test|chore|cleanup|security|revert)$'; then
+        if ! echo "${ctype}" | grep -qE '^(feat|fix|docs|refactor|perf|test|build|style|ci|chore|cleanup|security|revert)$'; then
           invalid_found=true
         fi
       else
@@ -84,7 +84,7 @@ checks_commit_conventions() {
       fi
     done <<< "${subjects2}"
     _check "commit-type" \
-      "Last 5 commit types in allowed set (feat|fix|docs|refactor|perf|test|chore|cleanup|security|revert)" \
+      "Last 5 commit types in allowed set (feat|fix|docs|refactor|perf|test|build|style|ci|chore|cleanup|security|revert)" \
       test "${invalid_found}" = false
   fi
 
