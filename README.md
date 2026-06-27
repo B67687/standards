@@ -22,6 +22,10 @@ Built with AI assistance — see [CREDITS.md](./CREDITS.md).
   <img alt="harness: Oh My OpenAgent" src="docs/badges/oh-my-openagent-harness.svg">
 </p>
 
+## About
+
+A framework of cross-repo conventions with automated shell-based audit enforcement for AI-enhanced software projects. Runs anywhere — no language runtime required beyond bash.
+
 ## Quick start
 
 ```bash

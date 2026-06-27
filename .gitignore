@@ -20,6 +20,7 @@
 !/.vale.ini
 !/.lycheeignore
 !/standards.json
+!/.lycheecache
 
 # Secrets
 .env
